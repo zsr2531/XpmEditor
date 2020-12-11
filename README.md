@@ -16,6 +16,6 @@ Make cool little icons like this!
 
 ## Missing features
 - Support for more characters per icon (probably not going to be implemented).
-- You can only draw 1 pixel at a time, no floodfill (paint bucket tool) or anything like that.
-- No way to undo changes, meaning that you can't make a pixel transparent for example.
+- You can only draw 1 pixel at a time (or by dragging while holding down left click), no floodfill (paint bucket tool) or anything like that.
+- No way to undo changes.
 - Cannot import from existing XPM code. (maybe going to be implemented? we'll see).
