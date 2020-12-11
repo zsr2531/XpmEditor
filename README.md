@@ -4,6 +4,10 @@ A quick and dirty web based editor for creating X PixMap icons. A live version i
 ## What the heck is this?
 I needed a little helper tool to make XPM icons to use with my status bar.
 
+## What can you do with this?
+Make cool little icons like this!
+![](https://i.imgur.com/8ccYbjD.png)
+
 ## Features
 - Color picker
 - Color history
