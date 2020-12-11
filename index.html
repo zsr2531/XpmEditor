@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css">
   <script src="script.js"></script>
 </head>
-<body>
+<body onload="createCanvas(true)">
   <h3>Recently used colors</h3>
   <ul id='recent-colors'></ul>
   <h3>Current color</h3>
@@ -21,11 +21,14 @@
       <input type="number" placeholder="Rows" id="row" value="20">
       <button onclick="createCanvas(false)">Create canvas!</button>
     </div>
+    <div id="pixels"></div>
     <div class="toolbar">
+      <span id="currCol" style="display: none;"></span>
+      <span id="currRow" style="display: none;"></span>
       <button onclick="generate()">Generate!</button>
     </div>
   </div>
   <h3>Generated code</h3>
-  <textarea readonly=true id="code" cols="100" rows="20"></textarea>
+  <textarea readonly=true id="code" cols="100" rows="50"></textarea>
 </body>
 </html>

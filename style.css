@@ -1,3 +1,19 @@
+body {
+  background-color: #000;
+  color: white;
+}
+
+input, textarea {
+  background-color: #333;
+  color: white;
+}
+
+button {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
 div {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -19,4 +35,12 @@ div {
 #recent-colors > li:after {
   content: '';
   padding-right: 12px;
+}
+
+#pixels {
+  display: grid;
+  width: min-content;
+  height: min-content;
+  background: url("pattern.png") repeat;
+  background-size: 30px;
 }
