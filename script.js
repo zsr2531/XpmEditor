@@ -6,7 +6,7 @@ function changeColor(value) {
 
 function onColorChange() {
   const newValue = document.getElementById("color").value;
-  if (lastColors.indexOf(newValue) != -1) {
+  if (lastColors.indexOf(newValue) !== -1) {
     return;
   }
 
@@ -20,7 +20,7 @@ function onColorChange() {
 }
 
 function createCanvas(bypass) {
-  if (!bypass || bypass === false) {
+  if (bypass === undefined) {
     if (!confirm("Are you sure you want to create a new canvas? This operation will clear the canvas"))
       return;
   }
@@ -88,7 +88,7 @@ function collectColors() {
 }
 
 function zeroExtend(str) {
-  if (str.length == 1) {
+  if (str.length === 1) {
     return '0' + str;
   }
 
@@ -119,13 +119,13 @@ function generate() {
     if (i == "count")
       continue;
 
-    let name = i == "transparent" ? "None" : colorToHex(i);
-    content += `,\n"${colors[i]}  c ${name}"`;
+    let name = i === "transparent" ? "None" : colorToHex(i);
+    content += `,&#10;"${colors[i]}  c ${name}"`;
   }
 
   const pixels = document.getElementById("pixels").children;
   for (let row = 0; row < rows; row++) {
-    content += ',\n"';
+    content += ',&#10;"';
 
     for (let col = 0; col < cols; col++) {
       const pixel = pixels[row * cols + col];
