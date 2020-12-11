@@ -6,6 +6,12 @@
   <title>XpmEditor</title>
   <link rel="stylesheet" href="style.css">
   <script src="script.js"></script>
+  <script>
+    document.addEventListener("contextmenu", function(e) {
+      e.preventDefault();
+      return false;
+    }, false);
+  </script>
 </head>
 <body onload="createCanvas(true)">
   <h3>Recently used colors</h3>
@@ -13,7 +19,7 @@
   <h3>Current color</h3>
   <input type="color" value="#000000" id="color" onchange="onColorChange()">
   <h3>Editor</h3>
-  <h4>Canvas size</h4>
+  <h4>Controls: Left click to draw pixel, right click to delete pixel.</h4>
   <div class="editor">
     <div class="horizontal">
       <input type="number" placeholder="Columns" id="col" value="20">
