@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XpmEditor</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+<body>
+  <h3>Recently used colors</h3>
+  <ul id='recent-colors'></ul>
+  <h3>Current color</h3>
+  <input type="color" value="#000000" id="color" onchange="onColorChange()">
+  <h3>Editor</h3>
+  <h4>Canvas size</h4>
+  <div class="editor">
+    <div class="horizontal">
+      <input type="number" placeholder="Columns" id="col" value="20">
+      <span>x</span>
+      <input type="number" placeholder="Rows" id="row" value="20">
+      <button onclick="createCanvas(false)">Create canvas!</button>
+    </div>
+    <div class="toolbar">
+      <button onclick="generate()">Generate!</button>
+    </div>
+  </div>
+  <h3>Generated code</h3>
+  <textarea readonly=true id="code" cols="100" rows="20"></textarea>
+</body>
+</html>

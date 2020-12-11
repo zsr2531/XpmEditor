@@ -1,0 +1,22 @@
+div {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.editor, .editor > * {
+  display: block;
+}
+
+#recent-colors {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+#recent-colors > li, div.horizontal {
+  display: inline;
+}
+
+#recent-colors > li:after {
+  content: '';
+  padding-right: 12px;
+}
