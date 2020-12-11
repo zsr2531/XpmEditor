@@ -24,24 +24,31 @@ function createCanvas(bypass) {
     if (!confirm("Are you sure you want to create a new canvas? This operation will clear the canvas"))
       return;
   }
-
+  
   const cols = document.getElementById("col").value;
   const rows = document.getElementById("row").value;
   const grid = document.getElementById("pixels");
+  
+  grid.style.gridTemplateRows = `repeat(${rows}, 14px)`;
+  grid.style.gridTemplateColumns = `repeat(${cols}, 14px)`;
 
-  grid.style.gridTemplateRows = `repeat(${rows}, 18px)`;
-  grid.style.gridTemplateColumns = `repeat(${cols}, 18px)`;
-
-  grid.children = [];
+  grid.innerHTML = "";
 
   const count = cols * rows;
   for (let i = 0; i < count; i++) {
     const item = document.createElement("button");
     item.style.backgroundColor = "transparent";
-    item.style.border = "none";
-    item.style.width = "18px";
-    item.style.height = "18px";
-    item.onclick = function(event) { fill(event.target); };
+    item.style.border = "1px solid rgba(0,0,0,0.3)";
+    item.style.width = "14px";
+    item.style.height = "14px";
+    item.style.outline = "none";
+    item.onmouseover = function(e) {
+      if (e.buttons === 1)
+        fill(e.target);
+      else if (e.buttons === 2)
+        reset(e.target);
+    }
+    item.onmousedown = item.onmouseover;
 
     grid.appendChild(item);
   }
@@ -53,6 +60,10 @@ function createCanvas(bypass) {
 function fill(pixel) {
   const color = document.getElementById("color").value;
   pixel.style.backgroundColor = color;
+}
+
+function reset(pixel) {
+  pixel.style.backgroundColor = "transparent";
 }
 
 function collectColors() {
@@ -84,11 +95,15 @@ function zeroExtend(str) {
   return str;
 }
 
+function hexify(raw) {
+  return zeroExtend(parseInt(raw).toString(16));
+}
+
 function colorToHex(color) {
   const regex = /rgb\((\d{1,3}), (\d{1,3}), (\d{1,3})\)/;
   const matches = regex.exec(color);
 
-  return '#' + zeroExtend(parseInt(matches[1]).toString(16)) + zeroExtend(parseInt(matches[2]).toString(16)) + zeroExtend(parseInt(matches[3]).toString(16));
+  return '#' + hexify(matches[1]) + hexify(matches[2]) + hexify(matches[3]);
 }
 
 function generate() {
