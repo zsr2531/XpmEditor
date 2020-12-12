@@ -20,18 +20,13 @@ function onColorChange() {
 }
 
 function createCanvas(bypass) {
-  if (bypass === undefined) {
-    if (!confirm("Are you sure you want to create a new canvas? This operation will clear the canvas"))
-      return;
-  }
+  if (!bypass && !confirm("Are you sure you want to create a new canvas? This operation will clear the canvas"))
+    return;
   
   const cols = document.getElementById("col").value;
   const rows = document.getElementById("row").value;
   const grid = document.getElementById("pixels");
   
-  grid.style.gridTemplateRows = `repeat(${rows}, 14px)`;
-  grid.style.gridTemplateColumns = `repeat(${cols}, 14px)`;
-
   grid.innerHTML = "";
 
   const count = cols * rows;
@@ -39,8 +34,6 @@ function createCanvas(bypass) {
     const item = document.createElement("button");
     item.style.backgroundColor = "transparent";
     item.style.border = "1px solid rgba(0,0,0,0.3)";
-    item.style.width = "14px";
-    item.style.height = "14px";
     item.style.outline = "none";
     item.onmouseover = function(e) {
       if (e.buttons === 1)
@@ -55,6 +48,7 @@ function createCanvas(bypass) {
 
   document.getElementById("currCol").innerHTML = cols;
   document.getElementById("currRow").innerHTML = rows;
+  onResolutionChanged();
 }
 
 function fill(pixel) {
@@ -138,4 +132,17 @@ function generate() {
 
   const final = header + content + footer;
   document.getElementById("code").innerHTML = final;
+}
+
+function onResolutionChanged() {
+  const txt = document.getElementById("scale-text");
+  const slider = document.getElementById("scale");
+  const value = slider.value;
+
+  txt.innerText = `${value}px`;
+  const grid = document.getElementById("pixels");
+  const cols = document.getElementById("col").value;
+  const rows = document.getElementById("row").value;
+  grid.style.gridTemplateColumns = `repeat(${cols}, ${value}px)`;
+  grid.style.gridTemplateRows = `repeat(${rows}, ${value}px)`;
 }

@@ -27,6 +27,10 @@
       <input type="number" placeholder="Rows" id="row" value="20">
       <button onclick="createCanvas(false)">Create canvas!</button>
     </div>
+    <div>
+      <input oninput="onResolutionChanged()" type="range" id="scale" min="6" max="30" placeholder="Scale" value="12">
+      <span id="scale-text">12px</span>
+    </div>
     <div id="pixels"></div>
     <div class="toolbar">
       <span id="currCol" style="display: none;"></span>
