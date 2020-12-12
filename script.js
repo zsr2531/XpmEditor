@@ -33,8 +33,6 @@ function createCanvas(bypass) {
   for (let i = 0; i < count; i++) {
     const item = document.createElement("button");
     item.style.backgroundColor = "transparent";
-    item.style.border = "1px solid rgba(0,0,0,0.3)";
-    item.style.outline = "none";
     item.onmouseover = function(e) {
       if (e.buttons === 1)
         fill(e.target);
@@ -61,7 +59,9 @@ function reset(pixel) {
 }
 
 function collectColors() {
-  let obj = {};
+  let obj = {
+    transparent: " "
+  };
 
   let count = 0;
   const children = document.getElementById("pixels").children;
@@ -77,7 +77,7 @@ function collectColors() {
     obj[color] = char;
   }
 
-  obj.count = count;
+  obj.count = count + 1;
   return obj;
 }
 
@@ -145,4 +145,10 @@ function onResolutionChanged() {
   const rows = document.getElementById("row").value;
   grid.style.gridTemplateColumns = `repeat(${cols}, ${value}px)`;
   grid.style.gridTemplateRows = `repeat(${rows}, ${value}px)`;
+  
+  const children = grid.children;
+  for (let i = 0; i < children.length; i++) {
+    children[i].style.width = value;
+    children[i].style.height = value;
+  }
 }

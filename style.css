@@ -44,3 +44,21 @@ div {
   background: url("pattern.png") repeat;
   background-size: 30px;
 }
+
+#pixels > button {
+  width: auto;
+  height: auto;
+  border-right: none;
+  border-bottom: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
+  outline: none;
+}
+
+#pixels:nth-child(-n+2) {
+  border-top: none;
+}
+
+#pixels:nth-child(odd) {
+  border-left: none;
+}
